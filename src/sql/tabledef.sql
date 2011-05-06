@@ -1,0 +1,6 @@
+use spring_football;
+
+CREATE TABLE IF NOT EXISTS team(
+	team_id MEDIUMINT PRIMARY KEY AUTO_INCREMENT, 
+	name VARCHAR(255) NOT NULL
+	);
