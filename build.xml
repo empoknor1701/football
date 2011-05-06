@@ -1,0 +1,36 @@
+<?xml version="1.0"?>
+
+<project name="spring_football" basedir="." default="run">
+	
+	<property name="src.dir" value="src"/>
+	<property name="lib.dir" value="lib"/>
+	<property name="classes.dir" value="classes"/>
+
+	<path id="classpath">
+		<fileset dir="${lib.dir}">
+			<include name="*.jar"/>
+		</fileset>
+	</path>
+	
+	<target name="init" description="作業ディレクトリを初期化します。">
+		<delete dir="${classes.dir}"/>
+		<mkdir dir="${classes.dir}"/>
+	</target>
+
+	<target name="compile" depends="init" description="コンパイルします。">
+		<javac destdir="${classes.dir}" debug="on" debuglevel="lines, vars, source" includeantruntime="no" encoding="UTF-8">
+			<src path="${src.dir}"/>
+			<classpath refid="classpath"/>
+		</javac>
+		<copy todir="${classes.dir}">
+			<fileset dir="${src.dir}">
+				<include name="**/*.xml" />
+			</fileset>	
+		</copy>
+	</target>
+	
+	<target name="run" depends="compile" description="アプリケーションを実行します。">
+		<java classname="ui.MenuUi" classpath="${classes.dir}" classpathref="classpath" fork="true"></java>
+	</target>
+	
+</project>
