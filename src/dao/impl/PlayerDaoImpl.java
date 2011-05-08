@@ -10,6 +10,7 @@ import dao.PlayerDao;
 public class PlayerDaoImpl extends JdbcDaoSupport implements PlayerDao{
 	private InsertPlayer insertPlayer;
 	private PlayerListQuery playerListQuery;
+	private PlayerQuery playerQuery;
 	
 	protected void initDao() throws Exception {
 		this.insertPlayer = new InsertPlayer(getDataSource());
@@ -23,4 +24,10 @@ public class PlayerDaoImpl extends JdbcDaoSupport implements PlayerDao{
 	public List getPlayerList(Integer teamId) throws DataAccessException {
 		return this.playerListQuery.execute(teamId);
 	}
+	@Override
+	public Player getPlayer(Integer id) throws DataAccessException {
+		return (Player) this.playerQuery.findObject(id);
+	}
+	
+	
 }
