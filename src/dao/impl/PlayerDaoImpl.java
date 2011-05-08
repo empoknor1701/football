@@ -6,6 +6,11 @@ import model.Player;
 import org.springframework.dao.DataAccessException;
 import org.springframework.jdbc.core.support.JdbcDaoSupport;
 import dao.PlayerDao;
+import dao.impl.DeletePlayer;
+import dao.impl.InsertPlayer;
+import dao.impl.PlayerListQuery;
+import dao.impl.PlayerQuery;
+import dao.impl.UpdatePlayer;
 
 public class PlayerDaoImpl extends JdbcDaoSupport implements PlayerDao{
 	private InsertPlayer insertPlayer;
