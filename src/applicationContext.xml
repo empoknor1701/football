@@ -18,6 +18,8 @@
 
 	<bean id="menuUi" class="ui.MenuUi">
 		<property name="selectTeamUi" ref="selectTeamUi"></property>
+		<property name="insertPlayerUi" ref="insertPlayerUi"></property>
+		<property name="selectPlayerUi" ref="selectPlayerUi"></property>
 	</bean>
 
 	<bean id="teamDao" class="dao.impl.TeamDaoImpl">
@@ -27,4 +29,29 @@
 	<bean id="selectTeamUi" class="ui.SelectTeamUi">
 		<property name="teamDao" ref="teamDao"></property>
 	</bean>
+
+	<bean id="playerDao" class="dao.impl.PlayerDaoImpl">
+		<property name="dataSource" ref="dataSource"></property>
+	</bean>
+
+	<bean id="insertPlayerUi" class="ui.InsertPlayerUi">
+		<property name="teamDao" ref="teamDao"></property>
+		<property name="playerDao" ref="playerDao"></property>
+	</bean>
+
+	<bean id="selectPlayerUi" class="ui.selectPlayerUi">
+		<property name="playerDao" ref="playerDao"></property>
+		<property name="updatePlayerUi" ref="updatePlayerUi"></property>
+		<property name="deletePlayerUi" ref="deletePlayerUi"></property>
+	</bean>
+
+	<bean id="updatetPlayerUi" class="ui.updatetPlayerUi">
+		<property name="playerDao" ref="playerDao"></property>
+		<property name="teamDao" ref="teamDao"></property>
+	</bean>
+
+	<bean id="deletetPlayerUi" class="ui.deletetPlayerUi">
+		<property name="playerDao" ref="playerDao"></property>
+	</bean>
+
 </beans>
