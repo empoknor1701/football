@@ -11,10 +11,14 @@ public class PlayerDaoImpl extends JdbcDaoSupport implements PlayerDao{
 	private InsertPlayer insertPlayer;
 	private PlayerListQuery playerListQuery;
 	private PlayerQuery playerQuery;
+	private DeletePlayer deletePlayer;
+	private UpdatePlayer updatePlayer;
 	
 	protected void initDao() throws Exception {
 		this.insertPlayer = new InsertPlayer(getDataSource());
 		this.playerListQuery = new PlayerListQuery(getDataSource());
+		this.deletePlayer = new DeletePlayer(getDataSource());
+		this.updatePlayer = new UpdatePlayer(getDataSource());
 	}
 	@Override
 	public void insertPlayer(Player player) throws DataAccessException {
@@ -29,5 +33,14 @@ public class PlayerDaoImpl extends JdbcDaoSupport implements PlayerDao{
 		return (Player) this.playerQuery.findObject(id);
 	}
 	
+	@Override
+	public void updatePlayer(Player player) throws DataAccessException {
+		this.updatePlayer.update(new Object[] { player.getName(), player.getTeam().getId(), player.getId() });
+	}
+	
+	@Override
+	public void deletePlayer(Player player) throws DataAccessException {
+		this.deletePlayer.update(player.getId());
+	}
 	
 }
