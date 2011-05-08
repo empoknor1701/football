@@ -32,6 +32,10 @@ public class DeletePlayerUi extends AbstractUi {
 		
 	}
 
+	public void setPlayerDao(PlayerDao playerDao) {
+		this.playerDao = playerDao;
+	}
+
 	private void showMenu() {
 		System.out.println("=========================");
 		System.out.println("選手名鑑: 選手削除");
