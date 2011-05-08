@@ -9,4 +9,5 @@ import model.Player;
 public interface PlayerDao {
 	void insertPlayer(Player player) throws DataAccessException;
 	List getPlayerList(Integer teamId);
+	Player getPlayer(Integer id) throws DataAccessException;
 }
